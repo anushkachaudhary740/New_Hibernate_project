@@ -4,17 +4,19 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.*;
+import java.util.List;
+
 @Entity
 public class Question {
     @Id
     @Column(name="question_id")
     private int questionId;
     private String question;
-    @OneToOne
-    private Answer answer;
+    @OneToMany(mappedBy = "question")
+    private List<Answer> answer;
 
 
-    public Question(int questionId, String question, Answer answer) {
+    public Question(int questionId, String question, List<Answer> answer) {
         this.questionId = questionId;
         this.question = question;
         this.answer = answer;
@@ -39,11 +41,11 @@ public class Question {
         this.question = question;
     }
 
-    public Answer getAnswer() {
+    public List<Answer> getAnswer() {
         return answer;
     }
 
-    public void setAnswer(Answer answer) {
+    public void setAnswer(List<Answer> answer) {
         this.answer = answer;
     }
 

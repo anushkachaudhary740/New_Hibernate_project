@@ -1,9 +1,6 @@
 package com.map;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Answer {
@@ -11,7 +8,7 @@ public class Answer {
     @Column(name="answer_id")
     private int answerId;
     private String answer;
-    @OneToOne
+    @ManyToOne
     private Question question;
 
     public Answer(int answerId, String answer,Question question) {
